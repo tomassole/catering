@@ -13,4 +13,26 @@
         </field>
     </record>
 
+    <record id="invoice_tree_add_untaxed" model="ir.ui.view">
+        <field name="name">account.invoice.tree.add_untaxed</field>
+        <field name="inherit_id" ref="account.invoice_tree"/>
+        <field name="model">account.invoice</field>
+        <field name="arch" type="xml">
+            <field name="amount_total_signed"  position="before">
+                <field name="amount_untaxed_signed" string="Amount untaxed" sum="Amount untaxed"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="invoice_supplier_tree_add_untaxed" model="ir.ui.view">
+        <field name="name">account.invoice.supplier.tree.add_untaxed</field>
+        <field name="inherit_id" ref="account.invoice_supplier_tree"/>
+        <field name="model">account.invoice</field>
+        <field name="arch" type="xml">
+            <field name="amount_total_signed"  position="before">
+                <field name="amount_untaxed_signed" string="Amount untaxed" sum="Amount untaxed"/>
+            </field>
+        </field>
+    </record>
+
 </odoo>

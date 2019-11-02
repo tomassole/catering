@@ -13,7 +13,12 @@ class scat_holidays(models.Model):
     school_ids = fields.Many2many(
         comodel_name='scat.school',
         relation='scat_holidays_scat_school_rel',
-        column1='scat_holidays_id', column2='scat_school_id', string='Colegios')
+        column1='scat_holidays_id', column2='scat_school_id',
+        string='Colegios')
+    holiday_type = fields.Selection([('local', 'Local'),
+                                     ('autonomico', u'Autonómico'),
+                                     ('nacional', 'Nacional')],
+                                    "Tipo", required=True)
 
     _sql_constraints = [
 

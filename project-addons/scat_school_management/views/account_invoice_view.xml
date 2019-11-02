@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="invoice_supplier_form_attr_analytic" model="ir.ui.view">
+        <field name="name">account.invoice.supplier.form.attr_analytic</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_analytic_id']" position="attributes">
+                <attribute name="domain">['|',('company_id', '=', parent.company_id),('company_id', '=', False)]</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="invoice_form_attr_analytic" model="ir.ui.view">
+        <field name="name">account.invoice.form.attr_analytic</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='account_analytic_id']" position="attributes">
+                <attribute name="domain">['|',('company_id', '=', parent.company_id),('company_id', '=', False)]</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_invoice_line_form_attr_analytic" model="ir.ui.view">
+        <field name="name">account.invoice.line.form.attr_analytic</field>
+        <field name="model">account.invoice.line</field>
+         <field name="inherit_id" ref="account.view_invoice_line_form"/>
+        <field name="arch" type="xml">
+            <field name="account_analytic_id" position="attributes">
+                <attribute name="domain">['|',('company_id', '=', parent.company_id),('company_id', '=', False)]</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>

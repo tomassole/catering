@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_template_tree_view" model="ir.ui.view">
+        <field name="name">product.template.product.tree</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="uom_id" position="after">
+                <field name="uom_po_id" options="{'no_open': True, 'no_create': True}" groups="product.group_uom"/>
+            </field>
+            <field name="active" position="after">
+                <field name="supplier_taxes_id"/>
+            </field>
+        </field>
+    </record>
+
+    <menuitem id="main_scat_menu_management" name="Gestión de menús" groups="mrp.group_mrp_user"/>
+
+    <record model="ir.ui.view" id="scat_menu_tree_view">
+        <field name="name">scat.menu.tree</field>
+        <field name="model">scat.menu</field>
+        <field name="arch" type="xml">
+            <tree string="Menús">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_menu_search_view">
+        <field name="name">scat.menu.search</field>
+        <field name="model">scat.menu</field>
+        <field name="arch" type="xml">
+            <search string="Menús">
+                <field name="name"/>
+                <field name="date"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_menu_form">
+        <field name="name">scat.menu.form</field>
+        <field name="model">scat.menu</field>
+        <field name="arch" type="xml">
+            <form string="Menú">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirmar" states="draft"/>
+                    <button name="load_lines" type="object" string="Cargar lineas" attrs="{'invisible': [('menu_line_ids', '!=', [])]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                <group colspan="4" col="4">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="menu_config_id"/>
+                    <separator string="Desglose" colspan="4"/>
+                    <field name="menu_line_ids" colspan="4" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="product_id" required="1"/>
+                            <field name="name"/>
+                            <field name="product_qty"/>
+                            <field name="mode"/>
+                            <field name="mtype_ids" widget="many2many_tags"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="product_id" required="1"/>
+                                <field name="name"/>
+                                <field name="mode"/>
+                                <field name="mtype_ids" widget="many2many_tags"/>
+                            </group>
+                        </form>
+                    </field>
+                </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="scat_menu_act">
+        <field name="name">Menús</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scat.menu</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="scat_menu_menu" name="Menús" parent="main_scat_menu_management" action="scat_menu_act" sequence="1"/>
+
+     <record model="ir.ui.view" id="scat_menu_rotative_tree_view">
+        <field name="name">scat.menu.rotative.tree</field>
+        <field name="model">scat.menu.rotative</field>
+        <field name="arch" type="xml">
+            <tree string="Menús rotativos">
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_menu_rotative_search_view">
+        <field name="name">scat.menu.rotative.search</field>
+        <field name="model">scat.menu.rotative</field>
+        <field name="arch" type="xml">
+            <search string="Menús rotativos">
+                <field name="name"/>
+                <field name="start_date"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_menu_rotative_form">
+        <field name="name">scat.menu.rotative.form</field>
+        <field name="model">scat.menu.rotative</field>
+        <field name="arch" type="xml">
+            <form string="Menú rotativo">
+                <header>
+                    <button name="action_open" string="Confirmar" type="object" states="draft"/>
+                    <button name="action_done" string="Finalizar" type="object" states="open"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                <group colspan="4" col="4">
+                    <field name="name"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <separator string="Lineas" colspan="4"/>
+                    <field name="line_ids" colspan="4" nolabel="1" context="{'line_ids': line_ids}">
+                        <tree editable="bottom">
+                            <field name="sequence"/>
+                            <field name="menu_id"/>
+                            <button name="open_menu_history" type="object" string="Menús creados" icon="fa-external-link"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="sequence"/>
+                                <field name="menu_id"/>
+                            </group>
+                        </form>
+                    </field>
+                </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="scat_menu_rotative_act">
+        <field name="name">Menús rotativos</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scat.menu.rotative</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="scat_menu_menu_rotative" name="Menús rotativos" parent="main_scat_menu_management" action="scat_menu_rotative_act"/>
+
+    <menuitem id="scat_menu_menu_conf" name="Configuración" parent="main_scat_menu_management" sequence="99"/>
+
+    <menuitem id="submenu_scat_allergens_action" name="Alérgenos" sequence="10" parent="scat_menu_menu_conf" action="scat_allergens.act_scat_allergens"/>
+
+    <record model="ir.ui.view" id="scat_menu_type_tree_view">
+        <field name="name">scat.menu.type.tree</field>
+        <field name="model">scat.menu.type</field>
+        <field name="arch" type="xml">
+            <tree string="Tipos de menús">
+                <field name="name"/>
+                <field name="conflict_allergens_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_menu_type_search_view">
+        <field name="name">scat.menu.type.search</field>
+        <field name="model">scat.menu.type</field>
+        <field name="arch" type="xml">
+            <search string="Tipos de menús">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_menu_type_form">
+        <field name="name">scat.menu.type.form</field>
+        <field name="model">scat.menu.type</field>
+        <field name="arch" type="xml">
+            <form string="Tipo de menú">
+                <sheet>
+                    <group colspan="4" col="4">
+                        <field name="name"/>
+                        <separator string="Alérgenos conflictivos" colspan="4"/>
+                        <field name="conflict_allergens_ids" colspan="4" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="scat_menu_type_act">
+        <field name="name">Tipos de menús</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scat.menu.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_scat_menu_type" name="Tipos de menús" sequence="15" parent="scat_menu_menu_conf" action="scat_menu_type_act"/>
+
+    <record model="ir.ui.view" id="scat_menu_config_tree_view">
+        <field name="name">scat.menu.config.tree</field>
+        <field name="model">scat.menu.config</field>
+        <field name="arch" type="xml">
+            <tree string="Plantillas de menú">
+                <field name="name"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_menu_config_search_view">
+        <field name="name">scat.menu.config.search</field>
+        <field name="model">scat.menu.config</field>
+        <field name="arch" type="xml">
+            <search string="Plantillas de menú">
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_menu_config_form">
+        <field name="name">scat.menu.config.form</field>
+        <field name="model">scat.menu.config</field>
+        <field name="arch" type="xml">
+            <form string="Plantilla de menú">
+                <header>
+                    <button name="action_open" string="Confirmar" type="object" states="draft"/>
+                    <button name="action_done" string="Finalizar" type="object" states="open"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                <group colspan="4" col="4">
+                    <field name="name"/>
+                    <separator string="Desglose" colspan="4"/>
+                    <field name="menu_line_ids" colspan="4" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="product_id"/>
+                            <field name="name"/>
+                            <field name="product_qty"/>
+                            <field name="mode"/>
+                            <field name="mtype_ids" widget="many2many_tags"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="product_id"/>
+                                <field name="name"/>
+                                <field name="mode"/>
+                                <field name="mtype_ids" widget="many2many_tags"/>
+                            </group>
+                        </form>
+                    </field>
+                </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="scat_menu_config_act">
+        <field name="name">Plantillas de menú</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scat.menu.config</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_scat_menu_config" name="Plantillas de menú" sequence="13" parent="scat_menu_menu_conf" action="scat_menu_config_act"/>
+
+</odoo>

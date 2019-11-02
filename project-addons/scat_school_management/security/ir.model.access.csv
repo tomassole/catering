@@ -16,3 +16,9 @@
 "scat_expediente_product_user","scat_expediente_product user","model_scat_expediente_product","group_scat_school_management_user",1,0,0,0
 "scat_course_manager","scat_course manager","model_scat_course","group_scat_school_management_manager",1,1,1,1
 "scat_course_user","scat_course user","model_scat_course","group_scat_school_management_user",1,0,0,0
+"scat_school_ise_integration_manager","scat_school_ise_integration manager","model_scat_school_ise_integration","group_scat_school_management_manager",1,1,1,0
+"scat_school_ise_integration_user","scat_school_ise_integration user","model_scat_school_ise_integration","group_scat_school_management_user",1,0,0,0
+"account_invoice_official","account_invoice official","account.model_account_invoice","group_scat_school_management_official",1,1,1,0
+"account_invoice_line_official","account_invoice_line official","account.model_account_invoice_line","group_scat_school_management_official",1,1,1,0
+"account_invoice_tax_official","account_invoice_tax official","account.model_account_invoice_tax","group_scat_school_management_official",1,1,1,0
+"account_journal_official","account_journal official","account.model_account_journal","group_scat_school_management_official",1,0,0,0

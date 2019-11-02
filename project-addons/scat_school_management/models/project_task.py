@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models, api
+from odoo import models, api
 
 
 class ProjectTask(models.Model):
 
-    _inherit='project.task'
-
+    _inherit = 'project.task'
 
     @api.multi
     def action_view_ticado(self):
@@ -24,4 +23,3 @@ class ProjectTask(models.Model):
                 'view_mode': 'tree,form',
                 'view_type': 'form'
             }
-

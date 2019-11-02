@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_company_form_add_ise_fields" model="ir.ui.view">
+        <field name="name">res.company.form.add_ise_fields</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="ISE">
+                    <group>
+                        <field name="ise_login"/>
+                        <field name="ise_password" password="True"/>
+                        <field name="ise_payment_mode_id"/>
+                        <field name="ise_fiscal_position_id"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>

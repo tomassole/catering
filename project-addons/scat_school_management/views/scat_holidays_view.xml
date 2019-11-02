@@ -9,7 +9,7 @@
                     <field name="start_date"/>
                     <field name="end_date"/>
                     <field name="description"/>
-
+                    <field name="holiday_type"/>
                 </tree>
             </field>
     </record>
@@ -22,6 +22,7 @@
                     <sheet>
                         <group>
                         <field name="description"/>
+                        <field name="holiday_type"/>
                         <field name="start_date"/>
                         <field name="end_date"/>
                         <field name="school_ids"/>

@@ -6,14 +6,21 @@
         <field name="model_id" ref="model_scat_student"/>
         <field name="global" eval="True"/>
         <field name="domain_force">['|',
-                                        ('school_id.school_id.company_id', '=', False),
-                                        ('school_id.school_id.company_id', 'child_of', [user.company_id.id]),
+                                        ('expedient_id.company_id', '=', False),
+                                        ('expedient_id.company_id', 'child_of', [user.company_id.id]),
                                     ]</field>
     </record>
 
     <record model="ir.rule" id="scat_expediente_comp_rule">
         <field name="name">Expediente: multi-company</field>
         <field name="model_id" ref="model_scat_expediente"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id', 'child_of', [user.company_id.id])]</field>
+    </record>
+
+    <record model="ir.rule" id="scat_school_ise_integration_comp_rule">
+        <field name="name">ISE integration: multi-company</field>
+        <field name="model_id" ref="model_scat_school_ise_integration"/>
         <field name="global" eval="True"/>
         <field name="domain_force">[('company_id', 'child_of', [user.company_id.id])]</field>
     </record>

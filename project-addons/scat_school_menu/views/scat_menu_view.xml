@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <record model="ir.ui.view" id="scat_menu_form_add_picks">
+        <field name="name">scat.menu.form.add_picks</field>
+        <field name="model">scat.menu</field>
+        <field name="inherit_id" ref="scat_menu.scat_menu_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <field name="picking_ids" invisible="1"/>
+                    <button type="object"
+                        name="action_view_delivery"
+                        class="oe_stat_button"
+                        icon="fa-truck"
+                        string="Entregas"
+                        attrs="{'invisible': [('picking_ids', '=', [])]}" groups="base.group_user">
+                    </button>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

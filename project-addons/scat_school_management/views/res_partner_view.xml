@@ -17,9 +17,14 @@
         <field name="inherit_id" ref="scat_res_partner.view_ej_herencia_res_partner_form"/>
         <field name="arch" type="xml">
         <field name="x_ise_centro" position="after" >
+            <field name="comensal_type"/>
+            <field name="syga"/>
+            <field name="not_modify_bank_data"/>
+            <field name="not_update_date"/>
+            <field name="not_update_parent" attrs="{'invisible': [('parent_id', '=', False)]}"/>
             <field name="active_school_id"/>
             <field name="course_id"/>
-            <button name="action_view_ticado" string="Control de presencia" type="object" class="oe_stat_button" icon="fa-user" help="Genera el calendario de control de presencia"/>
+            <button name="%(action_wizard_control_presencia)d" string="Control de presencia" type="action" class="oe_stat_button" icon="fa-user" help="Genera el calendario de control de presencia"/>
             <newline/>
         </field>
          <div class="oe_button_box" name="button_box">

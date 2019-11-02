@@ -1,0 +1,15 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_scat_menu_type_manager,scat_menu_type,model_scat_menu_type,mrp.group_mrp_manager,1,1,1,1
+access_scat_menu_type,scat_menu_type,model_scat_menu_type,mrp.group_mrp_user,1,0,0,0
+access_scat_menu_config_manager,scat_menu_config,model_scat_menu_config,mrp.group_mrp_manager,1,1,1,1
+access_scat_menu_config,scat_menu_config,model_scat_menu_config,mrp.group_mrp_user,1,0,0,0
+access_scat_menu_config_line_manager,scat_menu_config_line,model_scat_menu_config_line,mrp.group_mrp_manager,1,1,1,1
+access_scat_menu_config_line,scat_menu_config_line,model_scat_menu_config_line,mrp.group_mrp_user,1,0,0,0
+access_scat_menu_rotative_manager,scat_menu_rotative,model_scat_menu_rotative,mrp.group_mrp_manager,1,1,1,1
+access_scat_menu_rotative,scat_menu_rotative,model_scat_menu_rotative,mrp.group_mrp_user,1,0,0,0
+access_scat_menu_rotative_line_manager,scat_menu_rotative_line,model_scat_menu_rotative_line,mrp.group_mrp_manager,1,1,1,1
+access_scat_menu_rotative_line,scat_menu_rotative_line,model_scat_menu_rotative_line,mrp.group_mrp_user,1,0,0,0
+access_scat_menu_manager,scat_menu,model_scat_menu,mrp.group_mrp_manager,1,1,1,1
+access_scat_menu,scat_menu,model_scat_menu,mrp.group_mrp_user,1,0,0,0
+access_scat_menu_line_manager,scat_menu_line,model_scat_menu_line,mrp.group_mrp_manager,1,1,1,1
+access_scat_menu_line,scat_menu_line,model_scat_menu_line,mrp.group_mrp_user,1,0,0,0

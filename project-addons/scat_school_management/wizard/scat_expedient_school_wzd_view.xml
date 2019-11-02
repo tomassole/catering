@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <record id="action_wizard_set_date" model="ir.actions.act_window">
+            <field name="name">Fecha de finalizacion de expediente</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">expedient.school.wzd</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="view_get_end_date" model="ir.ui.view">
+            <field name="name">Fecha de finalizacion de expediente</field>
+            <field name="model">expedient.school.wzd</field>
+            <field name="arch" type="xml">
+                <form string="Wizard fecha fin">
+                   <sheet>
+                        <group>
+                            <field name="end_date"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name='confirm_set_date' string = "Aceptar" class = 'oe_highlight' type='object'/>
+                        <span class="or_cancel"> o
+                            <button string="Cancelar" class="oe_link" special="cancel" />
+                        </span>
+                    </footer>
+                </form>
+            </field>
+        </record>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="group_only_access_schools" model="res.groups">
+        <field name="name">Limitar el acceso a colegios permitidos</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <record id="scat_school_limit_rule" model="ir.rule">
+        <field name="name">Colegios que puede ver</field>
+        <field ref="scat_school_management.model_scat_school" name="model_id"/>
+        <field name="domain_force">[('id','in',user.school_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_only_access_schools'))]"/>
+    </record>
+
+    <record id="scat_student_limit_rule" model="ir.rule">
+        <field name="name">Asistencias que puede ver</field>
+        <field ref="scat_school_management.model_scat_student" name="model_id"/>
+        <field name="domain_force">[('school_id','in',user.school_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_only_access_schools'))]"/>
+    </record>
+
+    <record id="res_partner_limit_rule" model="ir.rule">
+        <field name="name">Niños que puede ver</field>
+        <field ref="base.model_res_partner" name="model_id"/>
+        <field name="domain_force">[('active_school_id','in',user.school_ids.ids)]</field>
+        <field name="groups" eval="[(4, ref('group_only_access_schools'))]"/>
+    </record>
+
+</odoo>

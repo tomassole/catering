@@ -55,8 +55,6 @@
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
-<!--  Declaramos los menu -->
-<menuitem id="scat_allergens_menu" name="Alérgenos" sequence="10"/>
-<menuitem id="submenu_scat_allergens_menu" name="Alérgenos" sequence="10" parent="scat_allergens_menu"/>
-<menuitem id="submenu_scat_allergens_action" name="Alérgenos" sequence="10" parent="submenu_scat_allergens_menu" action="act_scat_allergens"/>
+
+
 </odoo>

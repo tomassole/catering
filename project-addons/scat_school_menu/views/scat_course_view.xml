@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="scat_course_tree_view_add_ration">
+        <field name="name">scat.course.tree.add_ration</field>
+        <field name="model">scat.course</field>
+        <field name="inherit_id" ref="scat_school_management.scat_course_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="code_course" position="after">
+                <field name="ration_percentage"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_course_form_add_ration">
+        <field name="name">scat.course.form.add_ration</field>
+        <field name="model">scat.course</field>
+        <field name="inherit_id" ref="scat_school_management.scat_course_form"/>
+        <field name="arch" type="xml">
+            <field name="code_course" position="after">
+                <field name="ration_percentage"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

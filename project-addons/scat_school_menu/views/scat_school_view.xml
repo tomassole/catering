@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="scat_school_tree_view_add_wh">
+        <field name="name">scat.school.tree.add_wh</field>
+        <field name="model">scat.school</field>
+        <field name="inherit_id" ref="scat_school_management.scat_school_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="state_id" position="after">
+                <field name="warehouse_id"/>
+                 <field name="rotative_menu_ids" groups="mrp.group_mrp_user"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_school_search_view_add_wh">
+        <field name="name">scat.school.search.add_wh</field>
+        <field name="model">scat.school</field>
+        <field name="inherit_id" ref="scat_school_management.scat_school_search_view"/>
+        <field name="arch" type="xml">
+            <field name="state_id" position="after">
+                <field name="warehouse_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_school_form_add_wh">
+        <field name="name">scat.school.form.add_wh</field>
+        <field name="inherit_id" ref="scat_school_management.scat_school_form"/>
+        <field name="model">scat.school</field>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="warehouse_id"/>
+                <field name="rotative_menu_ids" widget="many2many_tags" groups="mrp.group_mrp_user"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

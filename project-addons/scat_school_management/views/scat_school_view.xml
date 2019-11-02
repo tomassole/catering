@@ -21,6 +21,7 @@
                     <field name="code"/>
                     <field name="notes"/>
                     <field name="state_id"/>
+                    <field name="analytic_account_id"/>
                 </tree>
             </field>
     </record>

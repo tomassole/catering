@@ -14,6 +14,7 @@
                 <tree string="School-Student">
                     <field name="school_id"/>
                     <field name="student_id"/>
+                    <field name="company_name"/>
                     <field name="start_date"/>
                     <field name="end_date"/>
                 </tree>
@@ -30,9 +31,13 @@
                     <group>
                         <field name="school_id"/>
                         <field name="student_id" />
+                        <field name="company_name" invisible="1"/>
                         <field name="start_date"/>
                         <field name="end_date"/>
                     </group>
+                    <div>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </sheet>
             </form>
         </field>

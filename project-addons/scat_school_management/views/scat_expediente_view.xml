@@ -10,10 +10,11 @@
                     <field name="n_lote"/>
                     <field name="partner_id"/>
                     <field name="start_date"/>
-                    <field name="end_date"/>
+                    <field name="end_date" readonly="True"/>
                     <field name="company_id" groups="base.group_multi_company"/>
                     <field name="journal_kids_id"/>
                     <field name="journal_ise_id"/>
+                    <field name="state"/>
                 </tree>
             </field>
     </record>
@@ -35,16 +36,22 @@
             <field name="model">scat.expediente</field>
             <field name="arch" type="xml">
                 <form string="Expediente">
+                    <header>
+                            <button name="%(action_wizard_set_date)d" type="action" string="Cerrar" states="open"/>
+                            <button name="abrir_expediente" type="object" string="Abrir" states="borrador"/>
+                            <field name="state" widget="statusbar"/>
+                    </header>
                     <group colspan="4" col="4">
                         <field name="n_expediente"/>
                         <field name="partner_id"/>
                         <field name="n_lote"/>
                         <field name="company_id" groups="base.group_multi_company"/>
                         <field name="start_date"/>
-                        <field name="end_date"/>
-                        <field name="company_id" groups="base.group_multi_company"/>
+                        <field name="end_date" readonly="True"/>
                         <field name="journal_kids_id"/>
                         <field name="journal_ise_id"/>
+                        <field name="canon_product_id" attrs="{'required': [('canon_percent', '!=', 0.0)]}"/>
+                        <field name="canon_percent" attrs="{'required': [('canon_product_id', '!=', False)]}"/>
                         <notebook colspan="4">
                         <page string="Productos">
                             <field name="product_ids" colspan="4" nolabel="1"/>

@@ -52,7 +52,7 @@ class AccountInvoice(models.Model):
     @api.multi
     def create_account_payment_line(self):
         for inv in self:
-            if inv.payment_order_ok and not inv.mandate_id:
+            if inv.mandate_required and not inv.mandate_id:
                 raise UserError(_(
                     "No Mandate on invoice %s") % inv.number)
         return super(AccountInvoice, self).create_account_payment_line()
