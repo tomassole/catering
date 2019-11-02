@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, exceptions
+from odoo import models, fields, api
+from odoo.exceptions import UserError
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
+from datetime import datetime, timedelta
 import time
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class ScatStudentChildInvoiceWzd(models.TransientModel):
@@ -25,33 +31,30 @@ class ScatStudentChildInvoiceWzd(models.TransientModel):
             search([('month', '=', obj.month), ('year', '=', str(obj.year)),
                     ('invoice_id', '=', False)], order="expedient_id")
         if not presencias:
-            raise exceptions.Warning("No se han encontrado controles de "
-                                     "presencia pendientes de facturar")
+            raise UserError("No se han encontrado controles de "
+                            "presencia pendientes de facturar")
         curr_expedient = False
-        expedient_lines = []
+        # Verificación previa de que los diarios están establecidos
         for control in presencias:
             if control.expedient_id != curr_expedient:
                 curr_expedient = control.expedient_id
                 if not curr_expedient.journal_kids_id:
-                    raise exceptions.\
-                        Warning("El diario no está establecido en el exp: %s" %
-                                (curr_expedient.display_name))
-                expedient_lines = control.expedient_id.get_invoice_lines()
-            #Funcion para cabecera de factura
-            partner = self.env['res.partner'].\
-                with_context(force_company=
-                             control.expedient_id.company_id.id).\
-                browse(control.student_id.commercial_partner_id.id)
-            invoice = control.crear_cabecera_factura(partner)
-            for line in expedient_lines:
-                discount = partner.property_product_pricelist.item_ids[0].\
-                    percent_price
-                l = {'invoice_id': invoice.id,
-                     'quantity': control.total_child,
-                     'discount': discount,
-                     'account_analytic_id':
-                     control.school_id.school_id.analytic_account_id.id}
-                l.update(line)
-                self.env['account.invoice.line'].create(l)
-            control.invoice_id = invoice.id
-            invoice.compute_taxes()
+                    raise UserError(
+                        "El diario no está establecido en el exp: %s" %
+                        curr_expedient.display_name)
+
+        # modificamos cron para lanzar proceso
+        try:
+            cron = self.env.ref('scat_school_management.ir_cron_invoice_wizard')
+        except ValueError:
+            raise UserError("No se ha encontrado la tarea cron!!!!")
+        cron_args = '(' + obj.month + ', ' + str(obj.year) + ')'
+        next_call = (datetime.now() + timedelta(seconds=60)).strftime(
+            DEFAULT_SERVER_DATETIME_FORMAT)
+        cron_data = {
+            'active': True,
+            'numbercall': 1,
+            'args': cron_args,
+            'nextcall': next_call,
+        }
+        cron.sudo().write(cron_data)
