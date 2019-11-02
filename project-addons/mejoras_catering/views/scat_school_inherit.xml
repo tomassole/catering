@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2019 Fenix Engineering Solutions
+    @author Jose F. Fernandez
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+    <record id="scat_school_tree_view" model="ir.ui.view">
+        <field name="name">scat.school.tree.mejoras</field>
+        <field name="model">scat.school</field>
+        <field name="inherit_id" ref="scat_school_management.scat_school_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="state_id" position="after">
+                <field name="ruta"/>
+                <field name="menu_apoyo"/>
+                <field name="menu_trabajadores"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="scat_school_form_view" model="ir.ui.view">
+        <field name="name">scat.school.form.mejoras</field>
+        <field name="model">scat.school</field>
+        <field name="inherit_id" ref="scat_school_management.scat_school_form"/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <field name="ruta"/>
+                <field name="menu_apoyo"/>
+                <field name="menu_trabajadores"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
