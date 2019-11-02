@@ -6,10 +6,7 @@ from datetime import datetime
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 import calendar
-import logging
 
-
-_logger = logging.getLogger(__name__)
 
 class scat_student(models.Model):
     _name = "scat.student"
@@ -226,13 +223,11 @@ class scat_student(models.Model):
                     invoice = False
                     if new_qty > 0:
                         invoice = control.\
-                            crear_cabecera_factura(partner,
-                                                   new_qty=new_qty)
+                            crear_cabecera_factura(partner)
                     elif new_qty < 0:
                         invoice = control.\
                             crear_cabecera_factura(partner,
-                                                   inv_type='out_refund',
-                                                   new_qty=new_qty)
+                                                   inv_type='out_refund')
                     if invoice:
                         expedient_lines = \
                             control.expedient_id.get_invoice_lines()
@@ -354,24 +349,17 @@ class scat_student(models.Model):
 
     def crear_cabecera_factura(self, partner, journal=False,
                                expedient=False, t='child',
-                               inv_type='out_invoice',
-                               new_qty=None):
+                               inv_type='out_invoice'):
         if not expedient:
             expedient = self.expedient_id
         if not journal:
             journal = expedient.journal_kids_id
-        name = u'Niño/a: ' + self.student_id.name + u', mes: ' + self.month \
-               + u' año: ' + self.year
-        if new_qty is None:
-            name = name + u' Usos: ' + str(self.total_child) or 0
-        else:
-            if new_qty > 0:
-                name = name + u' Cargo: ' + str(new_qty)
-            elif new_qty < 0:
-                name = name + u' Abono: ' + str(new_qty)
 
         res = {
-            'name': t == 'child' and name
+            'name': t == 'child' and (u'Niño/a: ' + self.student_id.name +
+                                      u', mes: ' + self.month + u' año: ' +
+                                      self.year + u' Usos: ' +
+                                      str(self.total_child) or 0)
             or expedient.display_name,
             'journal_id': journal.id,
             'type': inv_type,
@@ -416,57 +404,3 @@ class scat_student(models.Model):
             lista_festivos.update(lista_fechas)
 
         return lista_festivos
-
-    @api.model
-    def create_invoices(self, month=False, year=False):
-        _logger.info('----> Ejecutando create_invoices(%s, %s)' % (month, year))
-        presencias = self.env['scat.student'].\
-            search([('month', '=', month), ('year', '=', str(year)),
-                    ('invoice_id', '=', False)], order="expedient_id")
-        curr_expedient = False
-        expedient_lines = []
-        created_invoices = 0
-        confirmed_invoices = 0
-        for control in presencias:
-            if control.expedient_id != curr_expedient:
-                curr_expedient = control.expedient_id
-                expedient_lines = control.expedient_id.get_invoice_lines()
-                _logger.info('Procesando expediente %s' %
-                             curr_expedient.display_name)
-            try:
-                partner = self.env['res.partner'].\
-                    with_context(force_company=
-                                 control.expedient_id.company_id.id).\
-                    browse(control.student_id.commercial_partner_id.id)
-                _logger.info('Partner: %s' % partner.name)
-                invoice = control.crear_cabecera_factura(partner)
-                _logger.info('Creando factura: %s' % invoice.name)
-                created_invoices += 1
-                for line in expedient_lines:
-                    discount = partner.property_product_pricelist.item_ids[0].\
-                        percent_price
-                    l = {'invoice_id': invoice.id,
-                         'quantity': control.total_child,
-                         'discount': discount,
-                         'account_analytic_id':
-                         control.school_id.school_id.analytic_account_id.id}
-                    l.update(line)
-                    self.env['account.invoice.line'].create(l)
-                control.invoice_id = invoice.id
-                invoice.compute_taxes()
-                # Confirmación de la factura
-                if invoice.mandate_id \
-                        and invoice.mandate_id.state == 'valid' \
-                        and invoice.journal_id.sequence_id \
-                        and invoice.invoice_line_ids:
-                    _logger.info('Confirmar factura')
-                    invoice.action_date_assign()
-                    invoice.action_move_create()
-                    invoice.invoice_validate()
-                    confirmed_invoices += 1
-            except Exception as e:
-                msg = 'Error en el proceso: %s' % (str(e))
-                _logger.warning(msg)
-        _logger.info(
-            '----> Finalizado create_invoices. Creadas %s facturas, confirmadas %s'
-            % (created_invoices, confirmed_invoices))
