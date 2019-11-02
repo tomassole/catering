@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="action_view_students" model="ir.actions.act_window">
+            <field name="res_model">scat.student</field>
+            <field name="view_type">form</field>
+            <field name="name">Asistencias</field>
+            <field name="view_mode">tree,form</field>
+            <field name="src_model">scat.school</field>
+            <field name="domain">[('school_id','=',active_id)]</field>
+    </record>
+
+
+
+    <record model="ir.ui.view" id="scat_school_tree_view">
+            <field name="name">scat.school.tree</field>
+            <field name="model">scat.school</field>
+            <field name="arch" type="xml">
+                <tree string="scat_school Type Tree">
+                    <field name="name" string="Nombre"/>
+                    <field name="code"/>
+                    <field name="notes"/>
+                    <field name="state_id"/>
+                </tree>
+            </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_school_search_view">
+            <field name="name">scat.school.tree</field>
+            <field name="model">scat.school</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" string="Nombre"/>
+                    <field name="partner_id"/>
+                    <field name="code"/>
+                    <field name="state_id"/>
+                </search>
+            </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_school_form">
+            <field name="name">scat.school.form</field>
+            <field name="model">scat.school</field>
+            <field name="arch" type="xml">
+                <form string="scat_school Type form">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="%(action_view_students)d" string="Asistencias" type="action" class="oe_stat_button" icon="fa-calendar-o" help="Muestra alumnos de un colegio"/>
+                        </div>
+                        <group colspan="4" col="4">
+                        <field name="name" string="Nombre"/>
+                        <field name="partner_id"/>
+                        <field name="code"/>
+                        <field name="notes"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="scat_course_tree_view">
+            <field name="name">scat.course.tree</field>
+            <field name="model">scat.course</field>
+            <field name="arch" type="xml">
+                <tree string="course">
+                    <field name="name"/>
+                    <field name="code_course"/>
+                </tree>
+            </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_course_form">
+            <field name="name">scat.course.form</field>
+            <field name="model">scat.course</field>
+            <field name="arch" type="xml">
+                <form string="course">
+                    <group>
+                    <field name="name"/>
+                    <field name="code_course"/>
+                    </group>
+                </form>
+            </field>
+    </record>
+
+</odoo>

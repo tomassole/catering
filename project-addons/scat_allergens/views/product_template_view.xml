@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_product_template_form_add_allergens" model="ir.ui.view">
+        <field name="name">product.template.form.add_allergens</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <page name='notes' position="after">
+                <page name="allergens" string="Alérgenos">
+                    <field name="allergens_ids" nolabel="1" colspan="4"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+</odoo>

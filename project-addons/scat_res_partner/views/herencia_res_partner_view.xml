@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!-- Comentario en la Views -->
+
+
+     <record id="view_ej_herencia_res_partner_form" model="ir.ui.view">
+
+        <field name="name">herencia_res_partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+
+        <field name="lang" position="after" >
+
+            <field name="x_ise_nie" />
+            <field name="x_ise_estado"/>
+            <field name="x_ise_centro"/>
+            <field name="y_ise_factura_aut"/>
+            <field name="y_ise_l" attrs="{'invisible':[('y_ise_factura_aut','=', True)]}"/>
+            <field name="y_ise_m" attrs="{'invisible':[('y_ise_factura_aut','=', True)]}"/>
+            <field name="y_ise_x" attrs="{'invisible':[('y_ise_factura_aut','=', True)]}"/>
+            <field name="y_ise_j" attrs="{'invisible':[('y_ise_factura_aut','=', True)]}"/>
+            <field name="y_ise_v" attrs="{'invisible':[('y_ise_factura_aut','=', True)]}"/>
+            <field name="y_ise_s" attrs="{'invisible':[('y_ise_factura_aut','=', True)]}"/>
+        </field>
+        </field>
+    </record>
+</odoo>
+
+

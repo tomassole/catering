@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="scat_holidays_tree_view">
+            <field name="name">scat.holidays.tree</field>
+            <field name="model">scat.holidays</field>
+            <field name="arch" type="xml">
+                <tree string="Vacaciones">
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="description"/>
+
+                </tree>
+            </field>
+    </record>
+
+    <record model="ir.ui.view" id="scat_holidays_form">
+            <field name="name">scat.holidays.form</field>
+            <field name="model">scat.holidays</field>
+            <field name="arch" type="xml">
+                <form string="Vacaciones">
+                    <sheet>
+                        <group>
+                        <field name="description"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="school_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+    </record>
+
+
+</odoo>

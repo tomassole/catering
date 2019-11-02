@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+       <record id="code_a" model="scat.student.state">
+            <field name="code">A</field>
+            <field name="descripcion">Asiste</field>
+        </record>
+
+        <record id="code_f" model="scat.student.state">
+            <field name="code">F</field>
+            <field name="descripcion">Fuera de plazo</field>
+        </record>
+
+        <record id="code_j" model="scat.student.state">
+            <field name="code">J</field>
+            <field name="descripcion">No asiste</field>
+        </record>
+
+        <record id="code_s" model="scat.student.state">
+            <field name="code">S</field>
+            <field name="descripcion">Sabado</field>
+            <field name="special">True</field>
+        </record>
+
+        <record id="code_d" model="scat.student.state">
+            <field name="code">D</field>
+            <field name="descripcion">Domingo</field>
+            <field name="special">True</field>
+        </record>
+
+        <record id="code_h" model="scat.student.state">
+            <field name="code">H</field>
+            <field name="descripcion">Festivo</field>
+            <field name="special">True</field>
+        </record>
+
+    </data>
+</odoo>

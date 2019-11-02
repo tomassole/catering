@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="action_view_students" model="ir.actions.act_window">
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="name">Alumnos</field>
+        <field name="view_mode">tree,form</field>
+        <field name="src_model">scat.allergens</field>
+        <field name="domain">[('allergens_ids','=',active_id)]</field>
+    </record>
+
+
+<!-- Comentario en la Views -->
+     <record id="view_scat_allergens_form" model="ir.ui.view">
+        <field name="name">scat_allergens.form</field>
+        <field name="model">scat.allergens</field>
+        <field name="arch" type="xml">
+            <form string="Listado de Scat_allergens">
+                <div class="oe_button_box" name="button_box">
+                    <button name="%(action_view_students)d" string="Estudiantes" type="action" class="oe_stat_button" icon="fa-users"/>
+                </div>
+                <group>
+                    <field name="allergens"/>
+                    <field name="refinterna"/>
+
+                </group>
+            </form>
+        </field>
+    </record>
+     <record id="view_scat_allergens_tree" model="ir.ui.view">
+        <field name="name">scat_allergens.tree</field>
+        <field name="model">scat.allergens</field>
+        <field name="arch" type="xml">
+           <tree>
+                    <field name="allergens"/>
+                    <field name="refinterna"/>
+           </tree>
+        </field>
+    </record>
+   <record id="view_scat_allergens_search" model="ir.ui.view">
+        <field name="name">scat_allergens.search</field>
+        <field name="model">scat.allergens</field>
+        <field name="arch" type="xml">
+           <search>
+                    <field name="allergens"/>
+                    <field name="refinterna"/>
+           </search>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="act_scat_allergens">
+        <field name="name">scat_allergens</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scat.allergens</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+<!--  Declaramos los menu -->
+<menuitem id="scat_allergens_menu" name="Alérgenos" sequence="10"/>
+<menuitem id="submenu_scat_allergens_menu" name="Alérgenos" sequence="10" parent="scat_allergens_menu"/>
+<menuitem id="submenu_scat_allergens_action" name="Alérgenos" sequence="10" parent="submenu_scat_allergens_menu" action="act_scat_allergens"/>
+</odoo>

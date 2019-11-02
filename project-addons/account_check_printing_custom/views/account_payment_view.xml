@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_supplier_payment_tree_add_check_state" model="ir.ui.view">
+        <field name="name">account.supplier.payment.tree.add_check_state</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_supplier_payment_tree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <field name="check_state"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_payment_search_add_check_state" model="ir.ui.view">
+        <field name="name">account.payment.search.add_check_state</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_search"/>
+        <field name="arch" type="xml">
+            <filter name='state_draft' position="before">
+                <filter string="Check delivered" domain="[('check_state','=','delivered')]"/>
+                <filter string="Check not delivered" domain="[('check_state','=','not_delivered')]"/>
+                <separator/>
+            </filter>
+        </field>
+    </record>
+
+    <record id="view_account_payment_form_add_check_state" model="ir.ui.view">
+        <field name="name">account.payment.form.add_check_state</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="payment.view_account_payment_form_inherit_payment"/>
+        <field name="arch" type="xml">
+            <field name="payment_date" position="after">
+                <field name="check_state" attrs="{'invisible': [('payment_method_code', '!=', 'check_printing')]}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

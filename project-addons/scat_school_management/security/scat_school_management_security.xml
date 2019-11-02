@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record model="ir.rule" id="scat_student_comp_rule">
+        <field name="name">Calendar: multi-company</field>
+        <field name="model_id" ref="model_scat_student"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',
+                                        ('school_id.school_id.company_id', '=', False),
+                                        ('school_id.school_id.company_id', 'child_of', [user.company_id.id]),
+                                    ]</field>
+    </record>
+
+    <record model="ir.rule" id="scat_expediente_comp_rule">
+        <field name="name">Expediente: multi-company</field>
+        <field name="model_id" ref="model_scat_expediente"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id', 'child_of', [user.company_id.id])]</field>
+    </record>
+
+    <record model="ir.module.category" id="module_category_scat_school_management">
+           <field name="name">Gestor de Colegios</field>
+           <field name="description">Gestiona los permisos de Colegios</field>
+           <field name="sequence">3</field>
+    </record>
+
+
+    <record id="group_scat_school_management_user" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="category_id" ref="module_category_scat_school_management"/>
+    </record>
+
+     <record id="group_scat_school_management_official" model="res.groups">
+            <field name="name">Oficial</field>
+            <field name="category_id" ref="module_category_scat_school_management"/>
+                    <field name="implied_ids" eval="[(4, ref('group_scat_school_management_user'))]"/>
+      </record>
+
+    <record id="group_scat_school_management_manager" model="res.groups">
+        <field name="name">Gestor</field>
+        <field name="category_id" ref="module_category_scat_school_management"/>
+        <field name="implied_ids" eval="[(4, ref('group_scat_school_management_official'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+</odoo>

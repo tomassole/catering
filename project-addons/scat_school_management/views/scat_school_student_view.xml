@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Window Action -->
+
+
+    <!-- VISTAS -->
+
+    <!-- Vistas Alumno -->
+    <!-- Vista Arbol -->
+    <record model="ir.ui.view" id="scat_school_student_tree_view">
+            <field name="name">scat_school.student.tree</field>
+            <field name="model">scat.school.student</field>
+            <field name="arch" type="xml">
+                <tree string="School-Student">
+                    <field name="school_id"/>
+                    <field name="student_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </tree>
+            </field>
+    </record>
+
+    <!-- Vista Formulario -->
+    <record model="ir.ui.view" id="scat_school_student_form_view">
+        <field name="name">scat.school.student.form</field>
+        <field name="model">scat.school.student</field>
+        <field name="arch" type="xml">
+            <form string="School-Student Form">
+                <sheet>
+                    <group>
+                        <field name="school_id"/>
+                        <field name="student_id" />
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

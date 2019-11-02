@@ -1,0 +1,18 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"scat_student_manager","scat_student manager","model_scat_student","group_scat_school_management_manager",1,1,1,1
+"scat_student_official","scat_student official","model_scat_student","group_scat_school_management_official",1,1,1,0
+"scat_student_user","scat_student user","model_scat_student","group_scat_school_management_user",1,0,0,0
+"scat_student_state_all","scat_student_state all","model_scat_student_state","group_scat_school_management_user",1,0,0,0
+"scat_school_student_official","scat_school_student official","model_scat_school_student","group_scat_school_management_official",1,1,1,1
+"scat_school_student_user","scat_school_student user","model_scat_school_student","group_scat_school_management_user",1,0,0,0
+"scat_school_manager","scat_school manager","model_scat_school","group_scat_school_management_manager",1,1,1,1
+"scat_school_official","scat_school official","model_scat_school","group_scat_school_management_official",1,1,1,0
+"scat_school_user","scat_school user","model_scat_school","group_scat_school_management_user",1,0,0,0
+"scat_holidays_official","scat_holidays official","model_scat_holidays","group_scat_school_management_official",1,1,1,1
+"scat_holidays_user","scat_holidays user","model_scat_holidays","group_scat_school_management_user",1,0,0,0
+"scat_expediente_manager","scat_expediente manager","model_scat_expediente","group_scat_school_management_manager",1,1,1,1
+"scat_expediente_user","scat_expediente user","model_scat_expediente","group_scat_school_management_user",1,0,0,0
+"scat_expediente_product_manager","scat_expediente_product manager","model_scat_expediente_product","group_scat_school_management_manager",1,1,1,1
+"scat_expediente_product_user","scat_expediente_product user","model_scat_expediente_product","group_scat_school_management_user",1,0,0,0
+"scat_course_manager","scat_course manager","model_scat_course","group_scat_school_management_manager",1,1,1,1
+"scat_course_user","scat_course user","model_scat_course","group_scat_school_management_user",1,0,0,0

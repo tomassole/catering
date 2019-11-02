@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_add_allergens" model="ir.ui.view">
+        <field name="name">res.partner.form.add_allergens</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <page name='internal_notes' position="after">
+                <page name="allergens" string="Alérgenos">
+                    <field name="allergens_ids" nolabel="1" colspan="4"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Window Action -->
+
+
+    <!-- VISTAS -->
+
+    <!-- Vistas Alumno -->
+    <!-- Vista Arbol -->
+    <record model="ir.ui.view" id="scat_student_tree_view">
+            <field name="name">scat_student.tree</field>
+            <field name="model">scat.student</field>
+            <field name="arch" type="xml">
+                <tree string="Control de presencia" editable='top'>
+                    <field name="student_id"/>
+                    <field name="school_id"/>
+                    <field name="month"/>
+                    <field name="year"/>
+                    <field name="dia1" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia1_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia1_code" invisible="1"/>
+                    <field name="dia2" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia2_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia2_code" invisible="1"/>
+                    <field name="dia3" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia3_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia3_code" invisible="1"/>
+                    <field name="dia4" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia4_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia4_code" invisible="1"/>
+                    <field name="dia5" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia5_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia5_code" invisible="1"/>
+                    <field name="dia6" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia6_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia6_code" invisible="1"/>
+                    <field name="dia7" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia7_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia7_code" invisible="1"/>
+                    <field name="dia8" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia8_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia8_code" invisible="1"/>
+                    <field name="dia9" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia9_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia9_code" invisible="1"/>
+                    <field name="dia10" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia10_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia10_code" invisible="1"/>
+                    <field name="dia11" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia11_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia11_code" invisible="1"/>
+                    <field name="dia12" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia12_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia12_code" invisible="1"/>
+                    <field name="dia13" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia13_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia13_code" invisible="1"/>
+                    <field name="dia14" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia14_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia14_code" invisible="1"/>
+                    <field name="dia15" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia15_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia15_code" invisible="1"/>
+                    <field name="dia16" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia16_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia16_code" invisible="1"/>
+                    <field name="dia17" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia17_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia17_code" invisible="1"/>
+                    <field name="dia18" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia18_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia18_code" invisible="1"/>
+                    <field name="dia19" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia19_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia19_code" invisible="1"/>
+                    <field name="dia20" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia20_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia20_code" invisible="1"/>
+                    <field name="dia21" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia21_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia21_code" invisible="1"/>
+                    <field name="dia22" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia22_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia22_code" invisible="1"/>
+                    <field name="dia23" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia23_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia23_code" invisible="1"/>
+                    <field name="dia24" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia24_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia24_code" invisible="1"/>
+                    <field name="dia25" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia25_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia25_code" invisible="1"/>
+                    <field name="dia26" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia26_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia26_code" invisible="1"/>
+                    <field name="dia27" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia27_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia27_code" invisible="1"/>
+                    <field name="dia28" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia28_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia28_code" invisible="1"/>
+                    <field name="dia29" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia29_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia29_code" invisible="1"/>
+                    <field name="dia30" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia30_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia30_code" invisible="1"/>
+                    <field name="dia31" widget="selection" domain="[('special','=',False)]" attrs="{'readonly': [('dia31_code', 'in', ['S', 'D'])]}"/>
+                    <field name="dia31_code" invisible="1"/>
+                    <field name="total_ise"/>
+                    <field name="total_child"/>
+                </tree>
+            </field>
+    </record>
+
+    <!-- Vista Formulario -->
+    <record model="ir.ui.view" id="scat_student_form_view">
+        <field name="name">scat.student.form</field>
+        <field name="model">scat.student</field>
+        <field name="arch" type="xml">
+            <form string="Student Form">
+                <sheet>
+                    <group>
+                        <field name="student_id"/>
+                        <field name="school_id"/>
+                        <field name="month"/>
+                        <field name="year"/>
+                        <field name="dia1"/>
+                        <field name="dia2"/>
+                        <field name="dia3"/>
+                        <field name="dia4"/>
+                        <field name="dia5"/>
+                        <field name="dia6"/>
+                        <field name="dia7"/>
+                        <field name="dia8"/>
+                        <field name="dia9"/>
+                        <field name="dia10"/>
+                        <field name="dia11"/>
+                        <field name="dia12"/>
+                        <field name="dia13"/>
+                        <field name="dia14"/>
+                        <field name="dia15"/>
+                        <field name="dia16"/>
+                        <field name="dia17"/>
+                        <field name="dia18"/>
+                        <field name="dia19"/>
+                        <field name="dia20"/>
+                        <field name="dia21"/>
+                        <field name="dia22"/>
+                        <field name="dia23"/>
+                        <field name="dia24"/>
+                        <field name="dia25"/>
+                        <field name="dia26"/>
+                        <field name="dia27"/>
+                        <field name="dia28"/>
+                        <field name="dia29"/>
+                        <field name="dia30"/>
+                        <field name="dia31"/>
+                        <field name="total_ise"/>
+                        <field name="total_child"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

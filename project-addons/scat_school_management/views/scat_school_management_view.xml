@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Acciones de los menus -->
+    <record model="ir.actions.act_window" id="scat_student_list_action">
+        <field name="name">Control de presencia</field>
+        <field name="res_model">scat.student</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id = "scat_school">
+        <field name="name">Colegios</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scat.school</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id = "scat_expediente">
+        <field name="name">Expediente</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scat.expediente</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id = "scat_holidays">
+        <field name="name">Holidays</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scat.holidays</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id = "scat_course">
+        <field name="name">Course</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scat.course</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_view_alumnos" model="ir.actions.act_window">
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="name">Alumnos</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('x_ise_estado', '=', 'usuario'),('active_school_id', '!=', False),('x_ise_nie', '!=', False),('parent_id', '!=', False)]</field>
+    </record>
+
+
+
+    <!-- Menus pricinpal y secundarios -->
+    <menuitem id="main_scat_school_management" name="Gestión de colegios"/>
+
+    <menuitem id="m_res_partner" name="Alumnos" action="action_view_alumnos" parent="main_scat_school_management" sequence="1"/>
+
+    <menuitem id="submenu_scat_school" name="Colegios" action="scat_school" parent="main_scat_school_management" sequence="3"/>
+
+    <menuitem id="scat_student_menu" name="Control de presencia" action="scat_student_list_action" parent="main_scat_school_management" sequence="2"/>
+
+    <menuitem id="m_configuration" name="Configuración" parent="main_scat_school_management" sequence="10"/>
+
+    <menuitem id="submenu_scat_expediente" name="Expediente" action="scat_expediente" parent="m_configuration" sequence="1"/>
+
+    <menuitem id="submenu_scat_holidays" name="Vacaciones" action="scat_holidays" parent="m_configuration" sequence="2"/>
+
+    <menuitem id="submenu_scat_course" name="Cursos" action="scat_course" parent="m_configuration" sequence="3"/>
+
+</odoo>

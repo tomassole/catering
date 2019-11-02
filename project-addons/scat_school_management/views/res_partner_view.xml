@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="action_view_calendar" model="ir.actions.act_window">
+        <field name="res_model">scat.student</field>
+        <field name="view_type">form</field>
+        <field name="name">Asistencias</field>
+        <field name="view_mode">tree,form</field>
+        <field name="src_model">res.partner</field>
+        <field name="domain">[('student_id','=',active_id)]</field>
+    </record>
+
+<!-- Comentario en la Views -->
+    <record id="view_res_partner_form" model="ir.ui.view">
+        <field name="name">herencia_res_partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="scat_res_partner.view_ej_herencia_res_partner_form"/>
+        <field name="arch" type="xml">
+        <field name="x_ise_centro" position="after" >
+            <field name="active_school_id"/>
+            <field name="course_id"/>
+            <button name="action_view_ticado" string="Control de presencia" type="object" class="oe_stat_button" icon="fa-user" help="Genera el calendario de control de presencia"/>
+            <newline/>
+        </field>
+         <div class="oe_button_box" name="button_box">
+             <button name="%(action_view_calendar)d" string="Asistencias" type="action" class="oe_stat_button" icon="fa-calendar-o" help="Muestra los calendarios del alumno"/>
+        </div>
+        <notebook position='inside'>
+            <page string='Colegios'>
+                <field name="school_ids" colspan='4' context="{'default_student_id':active_id}"/>
+            </page>
+        </notebook>
+        </field>
+    </record>
+</odoo>
